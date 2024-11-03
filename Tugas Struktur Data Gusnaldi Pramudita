@@ -1,0 +1,42 @@
+// nomor1
+
+// const barisanangka = [1, 1, 2, 2, 2, 3, 3, 3, 3];
+
+// const frequency = barisanangka.reduce((acc, jumlah) => {
+//     acc[jumlah] = (acc[jumlah] || 0) + 1;
+//     return acc;
+// }, {});
+
+// console.log(frequency);
+
+
+// nomor 2
+
+// const barisanangka = [1, 2, 3, 3, 4, 4, 5, 5];
+// const frequency = {};
+// const result = [];
+
+// // // Hitung frekuensi kemunculan setiap angka
+// for (const num of barisanangka) {
+//     frequency[num] = (frequency[num] || 0) + 1;
+// }
+
+// // // Cari angka yang hanya muncul sekali
+// for (const num in frequency) {
+//     if (frequency[num] === 1) {
+//         result.push(Number(num));
+//     }
+// }
+
+// console.log(result);
+
+
+
+// nomor 3
+
+// const barisan1 = [2, 3, 4, 5, 6];
+// const barisan2 = [5, 6, 7, 8, 9];
+
+// const persamaan = barisan1.filter(num => barisan2.includes(num));
+
+// console.log(persamaan);
