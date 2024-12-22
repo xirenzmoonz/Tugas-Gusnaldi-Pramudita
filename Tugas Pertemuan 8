@@ -1,0 +1,24 @@
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr; // Jika array hanya memiliki satu elemen atau kosong, sudah terurut
+  }
+
+  const pivot = arr[arr.length - 1]; // Ambil elemen terakhir sebagai pivot
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]); // Elemen yang lebih kecil dari pivot masuk ke array kiri
+    } else {
+      right.push(arr[i]); // Elemen yang lebih besar atau sama dengan pivot masuk ke array kanan
+    }
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)]; // Gabungkan hasil rekursif dari kiri, pivot, dan kanan
+}
+
+// Contoh penggunaan
+const numbers = [3, 7, 8, 5, 2, 1, 9, 6, 4];
+const sortedNumbers = quickSort(numbers);
+console.log(sortedNumbers); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
