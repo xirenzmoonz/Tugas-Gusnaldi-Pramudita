@@ -1,0 +1,55 @@
+function radixSort(arr) {
+    // Fungsi untuk mendapatkan jumlah digit maksimum dalam array
+    const getMaxDigit = (arr) => {
+      let max = Math.max(...arr);
+      let maxDigits = 0;
+      while (max > 0) {
+        maxDigits++;
+        max = Math.floor(max / 10);
+      }
+      return maxDigits;
+    };
+  
+    const countingSort = (arr, exp) => {
+      const n = arr.length;
+      const output = new Array(n).fill(0);
+      const count = new Array(10).fill(0);
+  
+      // Hitung frekuensi setiap digit
+      for (let i = 0; i < n; i++) {
+        const index = Math.floor(arr[i] / exp);
+        count[index % 10]++;
+      }
+  
+      // Ubah count[i] menjadi posisi aktual di output[]
+      for (let i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+      }
+  
+      // Buat array output
+      for (let i = n - 1; i >= 0; i--) {
+        const index = Math.floor(arr[i] / exp);
+        output[count[index % 10] - 1] = arr[i];
+        count[index % 10]--;
+      }
+  
+      // Salin output ke arr
+      for (let i = 0; i < n; i++) {
+        arr[i] = output[i];
+      }
+    };
+  
+    // Fungsi utama radix sort
+    const maxDigitCount = getMaxDigit(arr);
+    for (let exp = 1; exp <= maxDigitCount; exp *= 10) {
+      countingSort(arr, exp);
+    }
+  
+    return arr;
+  }
+  
+  // Contoh penggunaan
+  const arr = [170, 45, 75, 90, 802, 24, 2, 66];
+  const sortedArr = radixSort(arr);
+  console.log(sortedArr); // Output: [2, 24, 45, 66, 75, 90, 170, 802]
+  
