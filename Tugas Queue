@@ -1,0 +1,53 @@
+class Queue {
+    constructor() {
+      this.items = [];
+    }
+  
+    // Menambahkan elemen ke dalam queue
+    enqueue(item) {
+      this.items.push(item);
+    }
+  
+    // Menghapus elemen dari queue
+    dequeue() {
+      if (!this.isEmpty()) {
+        return this.items.shift(); // shift() menghapus elemen dari depan
+      } else {
+        return "Queue is empty";
+      }
+    }
+  
+    // Melihat elemen paling depan tanpa menghapusnya
+    front() {
+      if (!this.isEmpty()) {
+        return this.items[0];
+      } else {
+        return "Queue is empty";
+      }
+    }
+  
+    // Mengecek apakah queue kosong
+    isEmpty() {
+      return this.items.length === 0;
+    }
+  
+    // Menghitung jumlah elemen dalam queue
+    size() {
+      return this.items.length;
+    }
+  }
+  
+  // Penggunaan queue
+  const queue = new Queue();
+  queue.enqueue(7);
+  queue.enqueue(20);
+  queue.enqueue(40);
+  queue.enqueue(80);
+  
+  console.log("depan element:", queue.front());  // Menampilkan elemen paling depan
+  console.log("Queue size:", queue.size());      // Menampilkan ukuran queue
+  
+  console.log("Dequeue element:", queue.dequeue());  // Menghapus dan menampilkan elemen paling depan
+  console.log("Queue size after dequeue:", queue.size());
+  
+  console.log("Is the queue empty?", queue.isEmpty());
